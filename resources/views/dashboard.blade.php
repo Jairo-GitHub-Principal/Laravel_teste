@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Painel de controle modificado') }}
         </h2>
     </x-slot>
 
@@ -9,7 +9,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
+                    @can('usuario')
+                        Dados do usuario
+                        @elsecan('admim')
+                            Somente o adm pode acessar esse ambiente
+                            @endcan
+                   
+                    {{ __("_Voce esta logado!") }}
                 </div>
             </div>
         </div>
